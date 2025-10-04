@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SCI UBU Virtual Tour</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ปุ่มเมนู Hamburger -->
+  <button id="open-btn" class="menu-btn" aria-label="เปิดเมนู">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- แถบเมนูด้านซ้าย -->
+  <div class="sidebar" id="sidebar">
+    <button id="close-btn" class="close-btn" aria-label="ปิดเมนู">&times;</button>
+
+    <div class="logo">
+      <img src="sci_atomic.png" alt="UBU" />
+    </div>
+
+    <ul class="menu">
+      <!-- เมนู: ภาพมุมสูง -->
+      <li>
+    <div class="menu-title" onclick="loadTour('overview'); setActiveBullet(this)">หน้าหลัก</div>
+  </li>
+
+      <!-- เมนู: เคมี -->
+      <li class="has-submenu">
+        <div class="menu-title" onclick="toggleSubmenu(this)">เคมี</div>
+        <ul class="submenu">
+          <li><div class="submenu-item" onclick="loadTour('chemistry_1');setActiveBullet(this)">ห้องปฏิบัติการเคมี CHEM1302</div></li>
+          <li><div class="submenu-item" onclick="loadTour('chemistry_2');setActiveBullet(this)">ห้องปฏิบัติการเคมี CHEM1401</div></li>
+          <li><div class="submenu-item" onclick="loadTour('chemistry_3');setActiveBullet(this)">ห้องปฏิบัติการเคมี CHEM1402</div></li>
+        </ul>
+      </li>
+
+      <!-- เมนู: ชีววิทยา -->
+      <li class="has-submenu">
+        <div class="menu-title" onclick="toggleSubmenu(this)">ชีววิทยา</div>
+        <ul class="submenu">
+          <li><div class="submenu-item" onclick="loadTour('microbio_1');setActiveBullet(this)">ห้องปฏิบัติการชีววิทยา BIO2201</div></li>
+          <li><div class="submenu-item" onclick="loadTour('microbio_2');setActiveBullet(this)">ห้องปฏิบัติการชีววิทยา BIO2202</div></li>
+        </ul>
+      </li>
+
+      <!-- เมนู: ฟิสิกส์ชีวการแพทย์ -->
+      <li class="has-submenu">
+        <div class="menu-title" onclick="toggleSubmenu(this)">ฟิสิกส์ชีวการแพทย์</div>
+        <ul class="submenu">
+          <li><div class="submenu-item" onclick="loadTour('biophysics_1');setActiveBullet(this)">ห้องห้องปฏิบัติการฟิสิกส์ PHY1317</div></li>
+        </ul>
+      </li>
+
+      <!-- เมนู: คณิตศาสตร์ -->
+      <li class="has-submenu">
+        <div class="menu-title" onclick="toggleSubmenu(this)">คณิตศาสตร์</div>
+        <ul class="submenu">
+          <li><div class="submenu-item" onclick="loadTour('math_1');setActiveBullet(this)">ห้องปฏิบัติการคอมพิวเตอร์ SC245</div></li>
+
+        </ul>
+      </li>
+
+      <!-- เมนู: วิทยาการข้อมูลและนวัตกรรมซอฟต์แวร์ -->
+      <li class="has-submenu">
+        <div class="menu-title" onclick="toggleSubmenu(this)">วิทยาการข้อมูลและนวัตกรรมซอฟต์แวร์</div>
+        <ul class="submenu">
+          <li><div class="submenu-item" onclick="loadTour('comtech_1');setActiveBullet(this)">ห้องปฏิบัติการคอมพิวเตอร์ SC242</div></li>
+          <li><div class="submenu-item" onclick="loadTour('comtech_2');setActiveBullet(this)">ห้องปฏิบัติการคอมพิวเตอร์ SC244</div></li>
+          
+        </ul>
+      </li>
+
+      <!-- เมนู: เทคโนโลยีสารสนเทศและการสื่อสาร -->
+      <li class="has-submenu">
+        <div class="menu-title" onclick="toggleSubmenu(this)">เทคโนโลยีสารสนเทศและการสื่อสาร</div>
+        <ul class="submenu">
+          <li><div class="submenu-item" onclick="loadTour('it_1');setActiveBullet(this)">ห้องปฏิบัติการคอมพิวเตอร์ SC443</div></li>
+          <li><div class="submenu-item" onclick="loadTour('it_2');setActiveBullet(this)">ห้อง 2</div></li>
+        </ul>
+      </li>
+
+      <!-- เมนู: วิทยาศาสตร์สิ่งแวดล้อม -->
+      <li class="has-submenu">
+        <div class="menu-title" onclick="toggleSubmenu(this)">วิทยาศาสตร์สิ่งแวดล้อม</div>
+        <ul class="submenu">
+          <li><div class="submenu-item" onclick="loadTour('env_1');setActiveBullet(this)">ห้องLecture SC349</div></li>
+        </ul>
+      </li>
+
+      <!-- เมนู: อาชีวอนามัยและความปลอดภัย -->
+      <li class="has-submenu">
+        <div class="menu-title" onclick="toggleSubmenu(this)">จุลชีววิทยา</div>
+        <ul class="submenu">
+          <li><div class="submenu-item" onclick="loadTour('safety_1');setActiveBullet(this)">ห้องปฏิบัติการจุลชีววิทยา BIO1201</div></li>
+          <li><div class="submenu-item" onclick="loadTour('safety_2');setActiveBullet(this)">ห้องปฏิบัติการจุลชีววิทยา BIO1203</div></li>
+        </ul>
+      </li>
+      
+      <li class="has-submenu">
+        <div class="menu-title" onclick="toggleSubmenu(this)">อาชีวอนามัยและความปลอดภัย</div>
+        <ul class="submenu">
+          <li><div class="submenu-item" onclick="loadTour('eh_1');setActiveBullet(this)">ห้องLecture SC312</div></li>
+          
+        </ul>
+      </li> 
+
+      <!-- เมนู: นวัตกรรมเทคโนโลยีวัสดุ -->
+      <li class="has-submenu">
+        <div class="menu-title" onclick="toggleSubmenu(this)">นวัตกรรมเทคโนโลยีวัสดุ</div>
+        <ul class="submenu">
+          <li><div class="submenu-item" onclick="loadTour('material_1');setActiveBullet(this)">ห้องLecture PHY1204</div></li>
+        </ul>
+      </li>
+
+      <!-- เมนู: เทคโนโลยีอาหารและพอลิเมอร์ -->
+      <li class="has-submenu">
+        <div class="menu-title" onclick="toggleSubmenu(this)">เทคโนโลยียางและพอลิเมอร์</div>
+        <ul class="submenu">
+          <li><div class="submenu-item" onclick="loadTour('foodtech_1');setActiveBullet(this)">ห้องปฏิบัติการเทคโนโลยียางและพอลิเมอร์ CHEM1202</div></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- พื้นที่แสดง Virtual Tour -->
+  <div class="viewer">
+    <div id="tour-container">
+      <iframe id="tour-frame" src="tours/overview/index.html" allowfullscreen></iframe>
+    </div>
+    <button class="fullscreen-btn" onclick="toggleFullScreen()">⛶</button>
+  </div>
+
+  <script src="script.js"></script>
+
+  <!-- โหลด overview ตอนเปิดเว็บ -->
+  <script>
+    window.onload = function () {
+      loadTour('overview');
+    };
+  </script>
+</body>
+</html>
+
+<!-- redeploy -->
