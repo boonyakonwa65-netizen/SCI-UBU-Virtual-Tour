@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>over</title>
+<title>Project Title</title>
 <meta charset="utf-8">
 <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui" />
 <style> @-ms-viewport { width: device-width; } </style>
@@ -66,6 +66,29 @@
 
 <script src="data.js"></script>
 <script src="index.js"></script>
+<script>
+  (function () {
+    function openFirstInfoHotspot() {
+      // เลือก info-hotspot ทั้งหมด
+      var all = document.querySelectorAll('#pano .info-hotspot');
+      if (all.length > 0) {
+        // ปิดทุกอันก่อน
+        all.forEach(function (el) { el.classList.remove('visible'); });
+        // เปิดอันแรก
+        all[0].classList.add('visible');
+      }
+    }
 
+    // เปิดตอนโหลด scene แรก
+    window.addEventListener('load', function () {
+      setTimeout(openFirstInfoHotspot, 200);
+    });
+
+    // เปิดใหม่ทุกครั้งที่สลับ scene ผ่านเมนู
+    document.getElementById('sceneList').addEventListener('click', function () {
+      setTimeout(openFirstInfoHotspot, 300);
+    });
+  })();
+</script>
 </body>
 </html>
